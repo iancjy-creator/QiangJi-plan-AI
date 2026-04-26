@@ -14,10 +14,14 @@ app = FastAPI(title="强基通 API", version="0.1.0")
 
 # ============ 配置 ============
 # 自动检测知识库路径（本地开发 vs Vercel部署）
+# Vercel Serverless: api/index.py -> 知识库在 ../knowledge_base
 KB_DIR_CANDIDATES = [
-    Path(__file__).parent / "knowledge_base_v2",           # 根目录同级
-    Path(__file__).parent.parent / "knowledge_base_v2",  # backend/../
-    Path.cwd() / "knowledge_base_v2",                    # 当前工作目录
+    Path(__file__).parent / "knowledge_base",           # api/knowledge_base
+    Path(__file__).parent.parent / "knowledge_base",    # 根目录/knowledge_base
+    Path(__file__).parent / "knowledge_base_v2",        # api/knowledge_base_v2
+    Path(__file__).parent.parent / "knowledge_base_v2", # 根目录/knowledge_base_v2
+    Path.cwd() / "knowledge_base",                      # cwd/knowledge_base
+    Path.cwd() / "knowledge_base_v2",                   # cwd/knowledge_base_v2
 ]
 
 KB_DIR = None

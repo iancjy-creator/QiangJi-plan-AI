@@ -39,6 +39,10 @@ DOUBAO_API_KEY = os.getenv("DOUBAO_API_KEY", "")
 DOUBAO_MODEL = os.getenv("DOUBAO_MODEL", "doubao-lite-4k")
 DOUBAO_BASE_URL = "https://ark.cn-beijing.volces.com/api/v3"
 
+@app.get("/")
+def root():
+    return {"status": "ok", "message": "强基通API", "docs": "访问 /health 查看状态"}
+
 # ============ 数据模型 ============
 class MatchRequest(BaseModel):
     province: str

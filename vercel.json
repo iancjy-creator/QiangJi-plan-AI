@@ -3,5 +3,3 @@
     { "source": "/(.*)", "destination": "/api/index" }
   ]
 }
-EOF && \
-echo "--- Done ---" && ls -la && echo "--- api/ ---" && ls -la api/ && echo "--- knowledge_base/ ---" && ls knowledge_base/ | head -5

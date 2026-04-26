@@ -14,7 +14,7 @@ import httpx
 # Vercel 运行的是 AWS Lambda 风格的函数，不是普通服务器
 # mangum 把 Lambda 事件转换成 ASGI 请求，让 FastAPI 能正常工作
 from mangum import Mangum
-
+handler = Mangum(app)
 app = FastAPI(title="强基通 API", version="0.4.0")
 
 # ============ 配置 ============
@@ -364,6 +364,7 @@ async def chat(req: ChatRequest):
 def health_check():
     sc = load_all_schools()
     return {"status": "ok", "kb_loaded": len(sc)}
+
 
 # ============ Vercel 入口 ============
 # mangum 把 FastAPI app 包装成 Vercel 能识别的 Lambda handler
